@@ -1,4 +1,39 @@
 ---
-title: 'Extraction'
+title: "Extraction"
+description: "The extraction endpoint is used when making document extraction requests."
 ---
 
+## Synchronous Extraction
+
+When making a synchronous request, the connection remains open for until the extraction process is completed, and you receive the fill response on a single request/response cycle.
+
+The timeout for a synchronous request is **300 seconds**.
+
+## Asynchronous Extraction
+
+You can use the asynchronous endpoint to extract documents asynchronously. A GUID will be returned and the connection closed. You will then have to poll the Check Status endpoint to receive the document extraction data.
+
+## Request Header
+
+## Parameters
+
+<Accordion title="File (Required)" icon="sparkles" iconType="regular">
+  The file parameter is compulsory and holds the file that you are extracting the data from.
+
+  **Only 1 file can be sent per request.**
+
+  Accepted Formats:
+
+  - **pdf**
+  - **docx**
+  - **txt**
+  - **tiff**
+  - **tif**
+  - **jpg**
+  - **jpeg**
+  - **png**
+
+  **Key**                                        **Type**                                      **Value**
+
+  file                                         File                                        [Base64-encoded file]
+</Accordion>
