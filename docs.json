@@ -28,18 +28,18 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Endpoints",
-            "pages": [
-              "guides/endpoints/asynchronous-extraction",
-              "guides/endpoints/extraction"
-            ]
-          },
-          {
             "group": "Getting started",
             "pages": [
               "index",
               "quickstart",
               "development"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "guides/endpoints/extraction",
+              "guides/endpoints/check-status"
             ]
           },
           {
