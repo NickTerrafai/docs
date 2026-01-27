@@ -25,22 +25,22 @@
           {
             "group": "Synchronous Extraction",
             "pages": [
-              "guides/synchronous-extraction/endpoint",
-              "guides/synchronous-extraction/header",
-              "guides/synchronous-extraction/body",
+              "guides/synchronous-extraction/request",
               "guides/synchronous-extraction/response-structure"
             ]
           },
           {
             "group": "Asynchronous Extraction",
             "pages": [
-              "guides/asynchronous-extraction/endpoint",
-              "guides/asynchronous-extraction/header",
-              "guides/asynchronous-extraction/body",
+              "guides/asynchronous-extraction/request",
               "guides/asynchronous-extraction/response-struture",
               {
                 "group": "Check Status",
-                "pages": []
+                "pages": [
+                  "guides/asynchronous-extraction/check-status/making-a-request",
+                  "guides/asynchronous-extraction/check-status/response-structure",
+                  "guides/asynchronous-extraction/check-status/job-statuss"
+                ]
               }
             ]
           },
