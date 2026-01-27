@@ -33,9 +33,7 @@
               "index",
               "guides/getting-started/getting-an-api-key",
               "guides/getting-started/creating-a-template",
-              "guides/getting-started/making-a-filter",
-              "quickstart",
-              "development"
+              "guides/getting-started/making-a-filter"
             ]
           },
           {
@@ -43,30 +41,6 @@
             "pages": [
               "guides/endpoints/extraction",
               "guides/endpoints/check-status"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
             ]
           }
         ]
