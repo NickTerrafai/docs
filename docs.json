@@ -33,7 +33,16 @@
           },
           {
             "group": "Asynchronous Extraction",
-            "pages": []
+            "pages": [
+              "guides/asynchronous-extraction/endpoint",
+              "guides/asynchronous-extraction/header",
+              "guides/asynchronous-extraction/body",
+              "guides/asynchronous-extraction/response-struture",
+              {
+                "group": "Check Status",
+                "pages": []
+              }
+            ]
           },
           {
             "group": "Endpoints",
