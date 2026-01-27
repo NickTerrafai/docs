@@ -24,7 +24,12 @@
           },
           {
             "group": "Synchronous Extraction",
-            "pages": []
+            "pages": [
+              "guides/synchronous-extraction/endpoint",
+              "guides/synchronous-extraction/header",
+              "guides/synchronous-extraction/body",
+              "guides/synchronous-extraction/response-structure"
+            ]
           },
           {
             "group": "Asynchronous Extraction",
