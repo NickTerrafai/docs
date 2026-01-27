@@ -9,9 +9,17 @@ When making a synchronous request, the connection remains open for until the ext
 
 The timeout for a synchronous request is **300 seconds**.
 
+```
+https://smartsense-dev-api.nostello.com/api/v1/extractFields
+```
+
 ## Asynchronous Extraction
 
 You can use the asynchronous endpoint to extract documents asynchronously. A GUID will be returned and the connection closed. You will then have to poll the Check Status endpoint to receive the document extraction data.
+
+```
+https://smartsense-dev-api.nostello.com/api/v1/extractFieldsAsync
+```
 
 ## Request Header
 
@@ -26,9 +34,9 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 
   **pdf, docx, txt, tiff, tif, jpg, jpeg, png**
 
-  **Key**                                        **Type**                                      **Value**
-
-  file                                         File                                        [Base64-encoded file]
+  | **Key** | **Type** | **Value**             |
+  | ------- | -------- | --------------------- |
+  | file    | File     | [Base64-encoded file] |
 </Accordion>
 
 <Accordion title="Template Name" icon="sparkles">
@@ -36,9 +44,9 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 
   **The name must match exactly including cases and spaces.**
 
-  **Key**                                        **Type**                                      **Value**
-
-  templateName                      Text                                       [template name]
+  | **Key**      | **Type** | **Value**       |
+  | ------------ | -------- | --------------- |
+  | templateName | Text     | [template name] |
 </Accordion>
 
 <Accordion title="Filter Name" icon="sparkles">
@@ -46,9 +54,9 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 
   **The name must match exactly including cases and spaces.**
 
-  **Key**                                        **Type**                                      **Value**
-
-  filterName                             Text                                       [filter name]
+  | **Key**    | **Type** | **Value**     |
+  | ---------- | -------- | ------------- |
+  | filterName | Text     | [filter name] |
 </Accordion>
 
 <Accordion title="Document Splitting" icon="sparkles">
@@ -56,9 +64,9 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 
   The setting is toggled on and off by specifying "true" or "false" in the request body. Please note that if document splitting is not specified it will **default to "false" off**.
 
-  **Key**                                        **Type**                                      **Value**
-
-  documentSplitting                Text                                        true/false
+  | **Key**           | **Type** | **Value**  |
+  | ----------------- | -------- | ---------- |
+  | documentSplitting | Text     | true/false |
 </Accordion>
 
 <Accordion title="Returning Documents" icon="sparkles">
@@ -66,9 +74,9 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 
   The setting is toggled on and off by specifying "true" or "false" in the request body. Please note that if return documents is not specified it will **default to "false" off**.
 
-  **Key**                                        **Type**                                      **Value**
-
-  returnDocuments                  Text                                        true/false
+  | **Key**         | **Type** | **Value**  |
+  | --------------- | -------- | ---------- |
+  | returnDocuments | Text     | true/false |
 </Accordion>
 
 <Accordion title="Returning Text" icon="sparkles">
@@ -86,9 +94,23 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 </Accordion>
 
 <Accordion title="Schema Chunking" icon="sparkles">
-  
+  Schema chunking (to be renamed template chunking) should generally be kept set to Auto. In this mode, the system extracts individual line items on a per-page basis, allowing documents with line items to be effectively unlimited in length.
+
+  However, each individual line item must exist entirely within a single page. If the data for a single line item spans more than one page, schema chunking must be changed to Combined.
+
+  Note that using "combined" chunking limits the total number of line items that can be extracted.
+
+  If schemaChunking is not included the request, the system will **automatically set it to “auto”**.
+
+  | **Key**        | **Type** | **Value**     |
+  | -------------- | -------- | ------------- |
+  | schemaChunking | Text     | auto/combined |
 </Accordion>
 
 <Accordion title="Password" icon="sparkles">
-  
+  If you need to extract password protected documents, the system can handle this. Simple insert the password in the request and it will extract the document using the password.
+
+  | Key      | Type | Value      |
+  | -------- | ---- | ---------- |
+  | password | Text | [password] |
 </Accordion>
