@@ -31,6 +31,9 @@
             "group": "Getting started",
             "pages": [
               "index",
+              "guides/getting-started/getting-an-api-key",
+              "guides/getting-started/creating-a-template",
+              "guides/getting-started/making-a-filter",
               "quickstart",
               "development"
             ]

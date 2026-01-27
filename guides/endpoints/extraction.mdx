@@ -24,16 +24,71 @@ You can use the asynchronous endpoint to extract documents asynchronously. A GUI
 
   Accepted Formats:
 
-  - **pdf**
-  - **docx**
-  - **txt**
-  - **tiff**
-  - **tif**
-  - **jpg**
-  - **jpeg**
-  - **png**
+  **pdf, docx, txt, tiff, tif, jpg, jpeg, png**
 
   **Key**                                        **Type**                                      **Value**
 
   file                                         File                                        [Base64-encoded file]
+</Accordion>
+
+<Accordion title="Template Name" icon="sparkles">
+  This parameter holds the name of the template you created in the UI. This parameter is \*\*compulsory \*\*when you do not specify a filer name so that the system knows which template to extract the document with.
+
+  **The name must match exactly including cases and spaces.**
+
+  **Key**                                        **Type**                                      **Value**
+
+  templateName                      Text                                       [template name]
+</Accordion>
+
+<Accordion title="Filter Name" icon="sparkles">
+  This paramter holds the name of the filter you created in the UI. This parameter is **compulsory** when you do not specify a template name. The filter will automatically determine which template to use based on the rules specified during filter creation.
+
+  **The name must match exactly including cases and spaces.**
+
+  **Key**                                        **Type**                                      **Value**
+
+  filterName                             Text                                       [filter name]
+</Accordion>
+
+<Accordion title="Document Splitting" icon="sparkles">
+  The document splitting parameter is used if you would like to split a file containing many documents into its component documents and extract each document seperately all within the same request.
+
+  The setting is toggled on and off by specifying "true" or "false" in the request body. Please note that if document splitting is not specified it will **default to "false" off**.
+
+  **Key**                                        **Type**                                      **Value**
+
+  documentSplitting                Text                                        true/false
+</Accordion>
+
+<Accordion title="Returning Documents" icon="sparkles">
+  You can use the returning documents parameter when you would like to return the file for each extracted document as a Base64-encoded PDF. This is convenient to use in combination with document splitting if you would like to store the seperated PDF file.
+
+  The setting is toggled on and off by specifying "true" or "false" in the request body. Please note that if return documents is not specified it will **default to "false" off**.
+
+  **Key**                                        **Type**                                      **Value**
+
+  returnDocuments                  Text                                        true/false
+</Accordion>
+
+<Accordion title="Returning Text" icon="sparkles">
+  The returning text parameters allows the ability to return all of the text extracted from the document as a single text blob for storage and indexing if required.
+
+  The setting is toggled on and off by specifying "true" or "false" in the request body. Please note that if return text is not specified it will **default to "false" off**.
+
+  **Key**                                        **Type**                                      **Value**
+
+  returnText                  Text                                        true/false
+
+  | Key        | Type | Value      |
+  | ---------- | ---- | ---------- |
+  | returnText | Text | true/false |
+</Accordion>
+
+<Accordion title="Schema Chunking" icon="sparkles">
+  
+</Accordion>
+
+<Accordion title="Password" icon="sparkles">
+  
 </Accordion>
