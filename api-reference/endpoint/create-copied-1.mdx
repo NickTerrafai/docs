@@ -1,21 +1,38 @@
 ---
 title: "Extract Fields Async"
-openapi: "POST /plants"
+api: "POST /api/v1/extractFieldsAsync"
+playground: "simple"
 ---
+
+Asynchronous extraction allows documents to be processed in the background. When a request is submitted, the system immediately returns a unique job identifier (GUID) and closes the connection.
 
 ## Endpoint
 
 ```
-https://ubunye-api.terrafai.com/api/v1/extractFieldsAsync
+https://smartsense-dev-api.nostello.com/api/v1/extractFieldsAsync
 ```
 
-## Document Source
+## Request Header
+
+All requests must include an API key in the `Authorization` header.
+
+| Key           | Value                  |
+| :------------ | :--------------------- |
+| Authorization | api-key [your api key] |
+
+## Request Body
+
+The request must be sent as **multipart/form-data**.
+
+### Document Source
 
 | Key  | Type | Value                 |
 | :--- | :--- | :-------------------- |
 | file | File | [Base64-encoded file] |
 
-## Extraction Options
+The file is compulsory when sending requests.
+
+### Extraction Options
 
 | Key               | Type | Default | Value           |
 | :---------------- | :--- | :------ | :-------------- |
@@ -27,7 +44,26 @@ https://ubunye-api.terrafai.com/api/v1/extractFieldsAsync
 | schemaChunking    | Text | auto    | auto/combined   |
 | password          | Text |         | [password]      |
 
-## Response
+## Request Example
+
+<CodeGroup>
+
+```curl bash
+curl --location 'https://smartsense-dev-api.nostello.com/api/v1/extractFieldsAsync' \
+--header 'Authorization: api-key opt_ede920076469_M8M9wr6WnmlvM05iiz6Rqxlr9yG-X8WjItmmqzIp03A' \
+--form 'file=@"[file path]"' \
+--form 'templateName="[template name]"' \
+--form 'filterName=""' \
+--form 'documentSplitting="false"' \
+--form 'returnDocuments="false"' \
+--form 'returnText="false"' \
+--form 'schemaChunking="auto"' \
+--form 'password=""'
+```
+
+</CodeGroup>
+
+## Response Example
 
 ```
 {
@@ -37,7 +73,8 @@ https://ubunye-api.terrafai.com/api/v1/extractFieldsAsync
 }
 ```
 
-| Field | Values | Description |
-| ----- | ------ | ----------- |
-|       |        |             |
-|       |        |             |
+| Field   | Values     | Description                                                                         |
+| ------- | ---------- | ----------------------------------------------------------------------------------- |
+| success | true/false | Indicates the success or failure of the request as a whole.                         |
+| message |            | The message will give information if a request has failed.                          |
+| guid    |            | This is the unique identifier that you must use to poll for the completed document. |

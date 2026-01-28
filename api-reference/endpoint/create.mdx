@@ -4,13 +4,17 @@ api: "POST /api/v1/extractFields"
 playground: "simple"
 ---
 
+Synchronous extraction processes a document in a single request–response cycle. The connection remains open until the extraction process completes and the full response is returned.
+
 ## Endpoint
 
 ```
-https://ubunye-api.terrafai.com/api/v1/extractFields
+https://smartsense-dev-api.nostello.com/api/v1/extractFields
 ```
 
 ## Request Header
+
+All requests must include an API key in the `Authorization` header.
 
 | Key           | Value                  |
 | ------------- | ---------------------- |
@@ -18,13 +22,15 @@ https://ubunye-api.terrafai.com/api/v1/extractFields
 
 ## Request Body
 
-The below shows all parameters for the request body when sending the request as form data.
+The request must be sent as **multipart/form-data**.
 
 ### Document Source
 
 | Key  | Type | Value                 |
 | ---- | ---- | --------------------- |
 | file | File | [Base64-encoded file] |
+
+The file is compulsory when sending requests.
 
 ### Extraction Options
 
@@ -38,7 +44,28 @@ The below shows all parameters for the request body when sending the request as 
 | schemaChunking    | Text | auto    | auto/combined   |
 | password          | Text |         | [password]      |
 
-## Response
+## Request Example
+
+<CodeGroup>
+
+```curl bash
+curl --location 'https://smartsense-dev-api.nostello.com/api/v1/extractFields' \
+--header 'Authorization: api-key opt_ede920076469_M8M9wr6WnmlvM05iiz6Rqxlr9yG-X8WjItmmqzIp03A' \
+--form 'file=@"[file path]"' \
+--form 'templateName="[template name]"' \
+--form 'filterName=""' \
+--form 'documentSplitting="false"' \
+--form 'returnDocuments="false"' \
+--form 'returnText="false"' \
+--form 'schemaChunking="auto"' \
+--form 'password=""'
+```
+
+</CodeGroup>
+
+## Response Example
+
+Below is an example of a success response.
 
 ```
 {

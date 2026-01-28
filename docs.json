@@ -25,10 +25,10 @@
           {
             "group": "Extraction",
             "pages": [
-              "guides/extraction/extraction-options",
-              "guides/extraction/checking-job-status",
+              "guides/extraction/synchronous-extraction",
               "guides/extraction/asynchronous-extraction",
-              "guides/extraction/synchronous-extraction"
+              "guides/extraction/checking-job-status",
+              "guides/extraction/extraction-options"
             ]
           }
         ]
@@ -36,12 +36,6 @@
       {
         "tab": "API reference",
         "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
           {
             "group": "Endpoint examples",
             "pages": [
