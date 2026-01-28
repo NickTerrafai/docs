@@ -1,0 +1,20 @@
+---
+title: "Asynchronous Extraction"
+---
+
+Asynchronous extraction allows documents to be processed in the background. When a request is submitted, the system immediately returns a unique job identifier (GUID) and closes the connection.
+
+This mode is recommended for:
+
+- Large or complex documents
+- Batch processing
+- Workloads where extraction time may exceed synchronous limits
+
+**How it works**
+
+1. An extraction job is created
+2. A GUID is returned immediately
+3. Processing continues in the background
+4. Results are retrieved by polling the job status endpoint
+
+The returned GUID is required to track progress and retrieve extraction results.

@@ -1,0 +1,133 @@
+---
+title: "Extraction Options"
+---
+
+Both synchronous and asynchronous extraction endpoints accept the same request body and support the extraction options described below.
+
+These options allow you to control:
+
+- How documents are selected and classified
+- Whether documents are split
+- What additional data is returned
+- How large or complex documents are handled
+
+<Accordion title="File (Required)" icon="sparkles" iconType="regular">
+  The file parameter contains the document to be extracted.
+
+  - **Required**
+  - Only **one file** may be sent per request
+  - Files must be Base64-encoded
+
+  **Supported formats**
+
+  - pdf
+  - docx
+  - txt
+  - tiff / tif
+  - jpg / jpeg
+  - png
+
+  | **Key** | **Type** | **Value**             |
+  | :------ | :------- | :-------------------- |
+  | file    | File     | [Base64-encoded file] |
+</Accordion>
+
+<Accordion title="Template Name" icon="sparkles">
+  Specifies the name of the template created in the UI that should be used for extraction.
+
+  - Required **if **`filterName`**is not provided** 
+  - Must match the template name **exactly**, including case and spacing
+
+  Templates define the expected structure and fields extracted from a document.
+
+  | **Key**      | **Type** | **Value**       |
+  | :----------- | :------- | :-------------- |
+  | templateName | Text     | [template name] |
+</Accordion>
+
+<Accordion title="Filter Name" icon="sparkles">
+  Specifies the name of a filter created in the UI.
+
+  - Required **if **`templateName`**is not provided** 
+  - Must match the filter name **exactly**, including case and spacing
+
+  Filters automatically determine which template to use based on the rules defined during filter creation.
+
+  | **Key**    | **Type** | **Value**     |
+  | :--------- | :------- | :------------ |
+  | filterName | Text     | [filter name] |
+</Accordion>
+
+<Accordion title="Document Splitting" icon="sparkles">
+  Enables splitting a single file containing multiple documents into individual documents, which are then extracted separately within the same request.
+
+  - Accepts `true` or `false`
+  - Defaults to `false` if not specified
+
+  This option is useful for multi-document PDFs such as scanned batches.
+
+  | **Key**           | **Type** | **Value**  |
+  | :---------------- | :------- | :--------- |
+  | documentSplitting | Text     | true/false |
+</Accordion>
+
+<Accordion title="Returning Documents" icon="sparkles">
+  Controls whether the extracted documents are returned as Base64-encoded PDF files.
+
+  - Accepts `true` or `false`
+  - Defaults to `false` if not specified
+
+  This option is commonly used in combination with document splitting when storing the separated PDFs is required.
+
+  | **Key**         | **Type** | **Value**  |
+  | :-------------- | :------- | :--------- |
+  | returnDocuments | Text     | true/false |
+</Accordion>
+
+<Accordion title="Returning Text" icon="sparkles">
+  Controls whether all extracted text is returned as a single text block.
+
+  - Accepts `true` or `false`
+  - Defaults to `false` if not specified
+
+  This is useful for:
+
+  - Full-text search
+  - Indexing
+  - Archival or audit purposes
+
+  | Key        | Type | Value      |
+  | :--------- | :--- | :--------- |
+  | returnText | Text | true/false |
+</Accordion>
+
+<Accordion title="Schema Chunking (Template Chunking)" icon="sparkles">
+  Schema chunking controls how line items are extracted from documents containing repeating or tabular data.
+
+  - Defaults to `auto` if not specified
+
+  **Modes**
+
+  - **Auto**\
+    Extracts line items on a per-page basis, allowing documents to contain a large number of line items.\
+    Each individual line item must exist entirely within a single page.
+  - **Combined**\
+    Combines pages during extraction, allowing line items to span multiple pages.\
+    This mode limits the total number of line items that can be extracted.
+
+  > **Recommendation:** Keep schema chunking set to `auto` unless line items span multiple pages.
+
+  | **Key**        | **Type** | **Value**     |
+  | :------------- | :------- | :------------ |
+  | schemaChunking | Text     | auto/combined |
+</Accordion>
+
+<Accordion title="Password" icon="sparkles">
+  Allows extraction of password-protected documents.
+
+  If the document is password protected, include the password in the request and the system will attempt extraction using the provided password.
+
+  | Key      | Type | Value      |
+  | :------- | :--- | :--------- |
+  | password | Text | [password] |
+</Accordion>

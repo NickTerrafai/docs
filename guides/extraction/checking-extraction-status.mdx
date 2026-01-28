@@ -1,0 +1,37 @@
+---
+title: "Checking Job Status"
+---
+
+When using asynchronous extraction, you must poll the job status endpoint to monitor progress and retrieve results once processing is complete.
+
+### Job lifecycle
+
+Each asynchronous job progresses through a series of states:
+
+| Status       | Meaning                                                                        |
+| :----------- | :----------------------------------------------------------------------------- |
+| `processing` | The job is still being processed. Continue polling at your preferred interval. |
+| `completed`  | The job has finished successfully and extraction results are available.        |
+| `failed`     | The job failed due to an error. Error details may be included in the response. |
+| `expired`    | The job data is no longer available.                                           |
+
+### Job retention & polling rules
+
+- A job’s GUID remains valid for **7 days** from creation.
+- Once a job has **completed or failed**:
+  - Extracted data (or error details) is available for **12 hours**.
+  - After the **first poll** following completion or failure, the data remains available for **15 minutes**.
+  - You may poll the job **up to 3 times**, with each poll resetting the 15-minute timer.
+
+After either:
+
+- The third poll, or
+- 15 minutes passing without another poll
+
+the following occurs:
+
+- Extracted data or error details are permanently deleted
+- Job status changes to `expired`
+- The GUID and final status remain available for the remainder of the 7-day retention period
+
+> **Best practice:** Poll only when needed and store results immediately after retrieval.

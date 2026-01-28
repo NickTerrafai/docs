@@ -1,4 +1,116 @@
 ---
-title: 'Making a Filter'
+title: "Filters"
 ---
 
+Filters allow you to **classify, route, or skip documents** before extraction. They are designed for workflows where you send **multiple document types** into the system and need to:
+
+- Apply **different templates** to different document types
+- Automatically **skip unsupported documents**
+- **Reduce consumption fees** by avoiding unnecessary extraction
+
+When using filters, you **do not need to explicitly specify a template** at extraction. The filter evaluates each document and automatically decides:
+
+- Whether the document should be extracted
+- Which template will be used
+
+## How Filters Work
+
+A filter is a **set of rules** that define how the system should classify incoming documents.
+
+Each rule represents **one possible decision** the system can make based on the content and appearance of a document.
+
+### Key Requirements
+
+- You must create **at least one template** before creating a filter
+- Each document is evaluated against the filter rules
+- Each rule is evaluated independently
+
+## Rule Configuration
+
+<Accordion title="Document Name" icon="sparkles">
+  The **Document Name** is a label assigned to a rule when it matches a document.
+
+  - It does **not** need to match the template name
+  - It does **not** need to reflect the actual document type
+  - It is used purely as an **identifier in the output**
+
+  **Requirements**
+
+  - This field is **mandatory**
+  - Every rule must have a Document Name
+</Accordion>
+
+<Accordion title="Document Description" icon="sparkles">
+  The **Document Description** defines what the document looks like and is used by the system to distinguish between document types.
+
+  This description can be based on:
+
+  - Visual layout (tables, headers, logos)
+  - Common phrases or keywords
+  - Document structure
+  - Formatting or content patterns
+
+  **Guidelines**
+
+  - This field is **mandatory**
+  - Be as specific as possible
+  - Descriptions can reference both visual and written attributes
+</Accordion>
+
+<Accordion title="Extract" icon="sparkles">
+  The **Extract** option controls whether documents matching this rule should be processed or skipped.
+
+  - **Enabled**:
+    - The document will be extracted
+    - You must select a template
+    - Consumption fees apply
+  - **Disabled**:
+    - The document will be skipped
+    - No extraction occurs
+    - No consumption fees are applied
+
+  This is especially useful for ignoring:
+
+  - Unsupported document types
+  - Irrelevant attachments
+</Accordion>
+
+<Accordion title="Template" icon="sparkles">
+  The **Template** field specifies which template should be used when extraction is enabled.
+
+  - This field is required **only if Extract is enabled**
+  - The selected template determines:
+    - Which fields are extracted
+    - How the data is structured in the output
+
+  If Extract is disabled, no template selection is required.
+</Accordion>
+
+## Best Practices
+
+- Place **more specific rules first** and general rules later
+- Always include a **final catch-all rule** to handle unexpected documents
+- Use filters to control costs by skipping irrelevant documents
+- Keep document descriptions focused and unambiguous
+
+<Accordion title="Example Filter" icon="sparkles">
+  The example filter below contains **three rules**:
+
+  1. **Invoice Rule**\
+     Any document that looks like an invoice is:
+     - Labeled as an invoice
+     - Extracted using the Invoice template
+  2. **Bank Statement Rule**\
+     Any document that looks like a bank statement is:
+     - Labeled as a bank statement
+     - Extracted using the Bank Statement template
+  3. **Catch-All Rule**\
+     Any document that is **not** an invoice or bank statement:
+     - Is skipped
+     - Is not extracted
+     - Does not incur any consumption fees
+
+  Each row in the filter represents **one rule**.
+
+  ![Picture9 2](/images/Picture9-2.png)
+</Accordion>

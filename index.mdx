@@ -1,4 +1,70 @@
 ---
 title: "Introduction"
-description: "Welcome to the documentation for the Terrafai Document Extraction API"
 ---
+
+Welcome to the documentation for the **Terrafai Document Extraction API**.
+
+The Terrafai API allows you to extract structured data from unstructured documents such as invoices, receipts, bank statements, and other business documents. Using natural-language templates and intelligent document classification, the API converts documents into clean, machine-readable output that can be integrated directly into your systems.
+
+This documentation is intended for developers and technical teams who want to automate document processing using the Terrafai platform.
+
+---
+
+## How the Terrafai API Works
+
+At a high level, document extraction with Terrafai follows a simple flow:
+
+1. **Define what data you want** using templates
+2. **Optionally classify documents** using filters
+3. **Submit documents for extraction**
+4. **Retrieve structured results**
+
+The sections below introduce the key concepts you’ll encounter throughout the guides.
+
+---
+
+## Core Concepts
+
+### Templates
+
+Templates define **what information should be extracted** from a document and **how the output should be structured**.
+
+A template consists of:
+
+- A set of fields written in natural language
+- Data types that control how values are parsed and formatted
+- Optional rules that transform or normalize extracted data
+
+Templates are required for extraction unless you are using filters to automatically select a template.
+
+---
+
+### Filters
+
+Filters allow you to **classify, route, or skip documents before extraction**.
+
+They are designed for workflows where:
+
+- Multiple document types are submitted through the same integration
+- Different templates should be applied automatically
+- Irrelevant or unsupported documents should be ignored
+
+When using filters, the system evaluates each document and decides:
+
+- Whether it should be extracted
+- Which template should be applied
+
+This helps reduce manual routing and avoid unnecessary consumption.
+
+---
+
+### Extraction Modes
+
+The API supports two extraction modes:
+
+- **Synchronous extraction**\
+  Returns results in a single request–response cycle. Best for small documents and real-time use cases.
+- **Asynchronous extraction**\
+  Processes documents in the background and returns a job identifier. Best for large documents, batch processing, or long-running extractions.
+
+Both modes use the same request structure and extraction options.

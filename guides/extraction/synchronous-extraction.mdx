@@ -1,0 +1,20 @@
+---
+title: "Synchronous Extraction"
+---
+
+Synchronous extraction processes a document in a single request–response cycle. The connection remains open until the extraction process completes and the full response is returned.
+
+This mode is best suited for:
+
+- Smaller documents
+- Interactive or real-time use cases
+- Scenarios where immediate results are required
+
+**Key characteristics**
+
+- Single request / single response
+- Subject to a maximum timeout of **300 seconds**
+
+If the extraction does not complete within the timeout window, the request will fail and should be retried using asynchronous extraction.
+
+> **Tip:** Use asynchronous extraction for large files or when processing time is unpredictable.
