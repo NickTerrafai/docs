@@ -7,7 +7,7 @@
     "light": "#8BAFE3",
     "dark": "#0D3B70"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/images/favicon.png",
   "navigation": {
     "tabs": [
       {
@@ -58,6 +58,9 @@
           {
             "group": "Endpoint examples",
             "pages": [
+              "api-reference/endpoint-examples/synchronous-extraction/POST",
+              "api-reference/endpoint-examples/asynchronous-extraction",
+              "api-reference/endpoint-examples/check-status",
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete",
