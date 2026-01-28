@@ -6,7 +6,7 @@ openapi: "POST /plants"
 ## Endpoint
 
 ```
-https://ubunye-api.terrafai.com/api/v1/extractFields
+https://ubunye-api.terrafai.com/api/v1/extractFieldsAsync
 ```
 
 ## Document Source
@@ -26,3 +26,18 @@ https://ubunye-api.terrafai.com/api/v1/extractFields
 | returnText        | Text | false   | true/false      |
 | schemaChunking    | Text | auto    | auto/combined   |
 | password          | Text |         | [password]      |
+
+## Response
+
+```
+{
+    "success": true,
+    "message": "Document processing started asynchronously.",
+    "guid": "c296b01c-2527-48d5-a885-a2aa840b3a46"
+}
+```
+
+| Field | Values | Description |
+| ----- | ------ | ----------- |
+|       |        |             |
+|       |        |             |
