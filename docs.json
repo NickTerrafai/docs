@@ -39,9 +39,9 @@
           {
             "group": "Endpoint examples",
             "pages": [
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/create-copied-1",
-              "api-reference/endpoint/get"
+              "api-reference/endpoint/extractfields",
+              "api-reference/endpoint/extractfieldsasync",
+              "api-reference/endpoint/checkstatus"
             ]
           }
         ]
