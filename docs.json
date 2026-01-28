@@ -45,13 +45,9 @@
           {
             "group": "Endpoint examples",
             "pages": [
-              "api-reference/endpoint-examples/synchronous-extraction/POST",
-              "api-reference/endpoint-examples/asynchronous-extraction",
-              "api-reference/endpoint-examples/check-status",
-              "api-reference/endpoint/get",
               "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/create-copied-1",
+              "api-reference/endpoint/get"
             ]
           }
         ]
