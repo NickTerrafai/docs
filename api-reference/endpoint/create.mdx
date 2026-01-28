@@ -3,3 +3,94 @@ openapi: "POST /plants"
 title: "Extract Fields"
 ---
 
+## Endpoint
+
+```
+https://ubunye-api.terrafai.com/api/v1/extractFields
+```
+
+## Document Source
+
+| Key  | Type | Value                 |
+| ---- | ---- | --------------------- |
+| file | File | [Base64-encoded file] |
+
+## Extraction Options
+
+| Key               | Type | Default | Value           |
+| ----------------- | ---- | ------- | --------------- |
+| templateName      | Text |         | [template name] |
+| filterName        | Text |         | [filter name]   |
+| documentSplitting | Text | false   | true/false      |
+| returnDocuments   | Text | false   | true/false      |
+| returnText        | Text | false   | true/false      |
+| schemaChunking    | Text | auto    | auto/combined   |
+| password          | Text |         | [password]      |
+
+## Response
+
+```
+{
+    "success": true,
+    "data": {
+        "completionTime": 48.94,
+        "originalName": "[document name]",
+        "processedPages": 1,
+        "documents": [
+            {
+                "extracted": true,
+                "averageDocumentConfidence": 94.32,
+                "sourcePages": [
+                    1
+                ],
+                "usedTemplateName": "[template name]",
+                "content": {
+                    "[field 1]": {
+                        "value": "[field value]",
+                        "confidence": 99.93,
+                        "page": 1,
+                        "boundingBox": {
+                            "top": 0.24541398882865906,
+                            "left": 0.7629675269126892,
+                            "width": 0.03504106402397156,
+                            "height": 0.007880417630076408
+                        }
+                    },
+                    "[field 2]": {
+                        "value": "[field value]",
+                        "confidence": 99.02,
+                        "page": 1,
+                        "boundingBox": {
+                            "top": 0.195048987865448,
+                            "left": 0.7912929654121399,
+                            "width": 0.04586394503712654,
+                            "height": 0.007497004698961973
+                        }
+                    },
+                },
+                "returnedText": "[text blob]",
+				"returnedDocumentBase64": "[Base 64]"
+            }
+        ]
+    }
+}
+```
+
+| Field                     | Type | Description |
+| ------------------------- | ---- | ----------- |
+| success                   |      |             |
+| data                      |      |             |
+| completionTime            |      |             |
+| originalName              |      |             |
+| processedPages            |      |             |
+| documents                 |      |             |
+| extracted                 |      |             |
+| averageDocumentConfidence |      |             |
+| usedTemplateName          |      |             |
+| content                   |      |             |
+| value                     |      |             |
+| confidence                |      |             |
+| page                      |      |             |
+| boundingBox               |      |             |
+| returnedText              |      |             |
+| returnedDocumentBase64    |      |             |
