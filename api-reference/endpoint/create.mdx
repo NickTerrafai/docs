@@ -9,13 +9,19 @@ title: "Extract Fields"
 https://ubunye-api.terrafai.com/api/v1/extractFields
 ```
 
-## Document Source
+## Request Header
+
+## Request Body
+
+The below shows all parameters for the request body when sending the request as form data.
+
+### Document Source
 
 | Key  | Type | Value                 |
 | ---- | ---- | --------------------- |
 | file | File | [Base64-encoded file] |
 
-## Extraction Options
+### Extraction Options
 
 | Key               | Type | Default | Value           |
 | ----------------- | ---- | ------- | --------------- |
@@ -66,7 +72,7 @@ https://ubunye-api.terrafai.com/api/v1/extractFields
                             "width": 0.04586394503712654,
                             "height": 0.007497004698961973
                         }
-                    },
+                    }
                 },
                 "returnedText": "[text blob]",
 				"returnedDocumentBase64": "[Base 64]"
@@ -76,21 +82,22 @@ https://ubunye-api.terrafai.com/api/v1/extractFields
 }
 ```
 
-| Field                     | Type | Description |
-| ------------------------- | ---- | ----------- |
-| success                   |      |             |
-| data                      |      |             |
-| completionTime            |      |             |
-| originalName              |      |             |
-| processedPages            |      |             |
-| documents                 |      |             |
-| extracted                 |      |             |
-| averageDocumentConfidence |      |             |
-| usedTemplateName          |      |             |
-| content                   |      |             |
-| value                     |      |             |
-| confidence                |      |             |
-| page                      |      |             |
-| boundingBox               |      |             |
-| returnedText              |      |             |
-| returnedDocumentBase64    |      |             |
+| Field                     | Type         | Values              | Description                                                                                                                                                                                    |
+| ------------------------- | ------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| success                   | Boolean      | true/false          | Indicates the success or failure of the request as a whole.                                                                                                                                    |
+| data                      | Objects      | -                   | Contains all of the data relating to the request.                                                                                                                                              |
+| completionTime            | Decimal      | ≥ 0                 | The time it took to process the entire request.                                                                                                                                                |
+| originalName              | String       | -                   | The name of the original document sent in the request.                                                                                                                                         |
+| processedPages            | Whole Number | ≥ 0                 | The total number of pages processed that the original document contained.                                                                                                                      |
+| documents                 | Array        | -                   | Contains the information relating to each document extracted. When document splitting is on, then there will be multiple document objects.                                                     |
+| extracted                 | Boolean      | true/false          | Indicates whether the document was extracted. When there is a filter in the extraction process, some documents will be false and not extracted depending on the rules specified in the filter. |
+| averageDocumentConfidence | Decimal      | 0–100               | Indicates the average confidence across all fields extracted from the document expressed as a percentage.                                                                                      |
+| sourcePages               | Array        | page numbers        | Pages from which this document was extracted                                                                                                                                                   |
+| usedTemplateName          | String       | -                   | The template used to extract the document.                                                                                                                                                     |
+| content                   | Object       | field-name → object | This holds the information relating to each field extracted.                                                                                                                                   |
+| value                     | String       | -                   | The value of the field extracted.                                                                                                                                                              |
+| confidence                | Decimal      | 0–100               | The confidence value for that specific extracted field.                                                                                                                                        |
+| page                      | Whole Number | ≥ 1                 | The page from where the document was extracted.                                                                                                                                                |
+| boundingBox               | Objects      | -                   | The 4 coordinates creating the box that surrounds the information extracted.                                                                                                                   |
+| returnedText              | String       | -                   | Contains the text blob of all the text found on the document.                                                                                                                                  |
+| returnedDocumentBase64    | String       | Base64              | Base64-encoded PDF document                                                                                                                                                                    |

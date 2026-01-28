@@ -3,3 +3,26 @@ title: "Extract Fields Async"
 openapi: "POST /plants"
 ---
 
+## Endpoint
+
+```
+https://ubunye-api.terrafai.com/api/v1/extractFields
+```
+
+## Document Source
+
+| Key  | Type | Value                 |
+| :--- | :--- | :-------------------- |
+| file | File | [Base64-encoded file] |
+
+## Extraction Options
+
+| Key               | Type | Default | Value           |
+| :---------------- | :--- | :------ | :-------------- |
+| templateName      | Text |         | [template name] |
+| filterName        | Text |         | [filter name]   |
+| documentSplitting | Text | false   | true/false      |
+| returnDocuments   | Text | false   | true/false      |
+| returnText        | Text | false   | true/false      |
+| schemaChunking    | Text | auto    | auto/combined   |
+| password          | Text |         | [password]      |
