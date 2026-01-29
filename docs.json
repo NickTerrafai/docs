@@ -39,9 +39,9 @@
           {
             "group": "Endpoint examples",
             "pages": [
-              "api-reference/endpoint/extractfields",
-              "api-reference/endpoint/extractfieldsasync",
-              "api-reference/endpoint/checkstatus"
+              "api-reference/endpoint-examples/extractfields",
+              "api-reference/endpoint-examples/extract-fields-async",
+              "api-reference/endpoint-examples/check-status"
             ]
           }
         ]

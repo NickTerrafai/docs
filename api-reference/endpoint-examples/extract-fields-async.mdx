@@ -1,0 +1,78 @@
+---
+title: "Extract Fields Async"
+---
+
+Asynchronous extraction allows documents to be processed in the background. When a request is submitted, the system immediately returns a unique job identifier (GUID) and closes the connection.
+
+## Endpoint
+
+```text
+https://smartsense-dev-api.nostello.com/api/v1/extractFieldsAsync
+```
+
+## Request Header
+
+All requests must include an API key in the `Authorization` header.
+
+| **Key**       | **Value**              |
+| :------------ | :--------------------- |
+| Authorization | api-key [your api key] |
+
+## Request Body
+
+The request must be sent as **multipart/form-data**.
+
+### Document Source
+
+| **Key** | **Type** | **Value**             |
+| :------ | :------- | :-------------------- |
+| file    | File     | [Base64-encoded file] |
+
+The file is compulsory when sending requests.
+
+### Extraction Optons
+
+| **Key**           | **Type** | **Default** | **Value**       |
+| :---------------- | :------- | :---------- | :-------------- |
+| templateName      | Text     |             | [template name] |
+| filterName        | Text     |             | [filter name]   |
+| documentSplitting | Text     | false       | true/false      |
+| returnDocuments   | Text     | false       | true/false      |
+| returnText        | Text     | false       | true/false      |
+| schemaChunking    | Text     | auto        | auto/combined   |
+| password          | Text     |             | [password]      |
+
+## Request Example
+
+<CodeGroup>
+
+``` bash
+curl --location 'https://smartsense-dev-api.nostello.com/api/v1/extractFieldsAsync' \
+--header 'Authorization: api-key opt_ede920076469_M8M9wr6WnmlvM05iiz6Rqxlr9yG-X8WjItmmqzIp03A' \
+--form 'file=@"[file path]"' \
+--form 'templateName="[template name]"' \
+--form 'filterName=""' \
+--form 'documentSplitting="false"' \
+--form 'returnDocuments="false"' \
+--form 'returnText="false"' \
+--form 'schemaChunking="auto"' \
+--form 'password=""'
+```
+
+</CodeGroup>
+
+## Response Example
+
+```text
+{
+    "success": true,
+    "message": "Document processing started asynchronously.",
+    "guid": "c296b01c-2527-48d5-a885-a2aa840b3a46"
+}
+```
+
+| **Field** | **Values** | **Description**                                                                     |
+| :-------- | :--------- | :---------------------------------------------------------------------------------- |
+| success   | true/false | Indicates the success or failure of the request as a whole.                         |
+| message   |            | The message will give information if a request has failed.                          |
+| guid      |            | This is the unique identifier that you must use to poll for the completed document. |

@@ -1,0 +1,108 @@
+---
+title: "Check Status"
+---
+
+## Endpoint
+
+Below is the endpoint you must use to poll the system. Make sure to include the GUID you received from the extract fields async endpoint at the end of the request.
+
+```text
+https://smartsense-dev-api.nostello.com/api/v1/checkStatus/[guid]
+```
+
+## [**​**](https://docs.terrafai.com/api-reference/endpoint/get#request-header)Request Header
+
+All requests must include an API key in the `Authorization` header.
+
+| **Key**       | **Value**              |
+| :------------ | :--------------------- |
+| Authorization | api-key [your api key] |
+
+## [**​**](https://docs.terrafai.com/api-reference/endpoint/get#request-body)Request Body
+
+There is no request body
+
+## [**​**](https://docs.terrafai.com/api-reference/endpoint/get#response-examples)Response Examples
+
+The below example is what you will received when the document is still being processed.
+
+```text
+{
+    "success": true,
+    "data": {
+        "status": "processing",
+        "progress": 10
+    }
+}
+```
+
+Below is an example of the response you will receive when the document has completed processing.
+
+```text
+{
+    "success": true,
+    "data": {
+        "completionTime": 48.94,
+        "originalName": "[document name]",
+        "processedPages": 1,
+        "documents": [
+            {
+                "extracted": true,
+                "averageDocumentConfidence": 94.32,
+                "sourcePages": [
+                    1
+                ],
+                "usedTemplateName": "[template name]",
+                "content": {
+                    "[field 1]": {
+                        "value": "[field value]",
+                        "confidence": 99.93,
+                        "page": 1,
+                        "boundingBox": {
+                            "top": 0.24541398882865906,
+                            "left": 0.7629675269126892,
+                            "width": 0.03504106402397156,
+                            "height": 0.007880417630076408
+                        }
+                    },
+                    "[field 2]": {
+                        "value": "[field value]",
+                        "confidence": 99.02,
+                        "page": 1,
+                        "boundingBox": {
+                            "top": 0.195048987865448,
+                            "left": 0.7912929654121399,
+                            "width": 0.04586394503712654,
+                            "height": 0.007497004698961973
+                        }
+                    }
+                },
+                "returnedText": "[text blob]",
+				"returnedDocumentBase64": "[Base 64]"
+            }
+        ]
+    }
+}
+```
+
+### [**​**](https://docs.terrafai.com/api-reference/endpoint/get#response-fields)Response Fields
+
+| **Field**                 | **Type**     | **Values**          | **Description**                                                                                                                                                                                |
+| :------------------------ | :----------- | :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| success                   | Boolean      | true/false          | Indicates the success or failure of the request as a whole.                                                                                                                                    |
+| data                      | Objects      | -                   | Contains all of the data relating to the request.                                                                                                                                              |
+| completionTime            | Decimal      | ≥ 0                 | The time it took to process the entire request.                                                                                                                                                |
+| originalName              | String       | -                   | The name of the original document sent in the request.                                                                                                                                         |
+| processedPages            | Whole Number | ≥ 0                 | The total number of pages processed that the original document contained.                                                                                                                      |
+| documents                 | Array        | -                   | Contains the information relating to each document extracted. When document splitting is on, then there will be multiple document objects.                                                     |
+| extracted                 | Boolean      | true/false          | Indicates whether the document was extracted. When there is a filter in the extraction process, some documents will be false and not extracted depending on the rules specified in the filter. |
+| averageDocumentConfidence | Decimal      | 0–100               | Indicates the average confidence across all fields extracted from the document expressed as a percentage.                                                                                      |
+| sourcePages               | Array        | page numbers        | Pages from which this document was extracted                                                                                                                                                   |
+| usedTemplateName          | String       | -                   | The template used to extract the document.                                                                                                                                                     |
+| content                   | Object       | field-name → object | This holds the information relating to each field extracted.                                                                                                                                   |
+| value                     | String       | -                   | The value of the field extracted.                                                                                                                                                              |
+| confidence                | Decimal      | 0–100               | The confidence value for that specific extracted field.                                                                                                                                        |
+| page                      | Whole Number | ≥ 1                 | The page from where the document was extracted.                                                                                                                                                |
+| boundingBox               | Objects      | -                   | The 4 coordinates creating the box that surrounds the information extracted.                                                                                                                   |
+| returnedText              | String       | -                   | Contains the text blob of all the text found on the document.                                                                                                                                  |
+| returnedDocumentBase64    | String       | Base64              | Base64-encoded PDF document                                                                                                                                                                    |
