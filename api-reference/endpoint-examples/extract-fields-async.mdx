@@ -24,9 +24,9 @@ The request must be sent as **multipart/form-data**.
 
 ### Document Source
 
-| **Key** | **Type** | **Value**             |
-| :------ | :------- | :-------------------- |
-| file    | File     | [Base64-encoded file] |
+| **Key** | **Type** | **Value**            |
+| :------ | :------- | :------------------- |
+| file    | File     | [binary file upload] |
 
 The file is compulsory when sending requests.
 
@@ -46,7 +46,7 @@ The file is compulsory when sending requests.
 
 <CodeGroup>
 
-``` bash
+```bash
 curl --location 'https://smartsense-dev-api.nostello.com/api/v1/extractFieldsAsync' \
 --header 'Authorization: api-key opt_ede920076469_M8M9wr6WnmlvM05iiz6Rqxlr9yG-X8WjItmmqzIp03A' \
 --form 'file=@"[file path]"' \
